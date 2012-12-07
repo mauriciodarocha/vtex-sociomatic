@@ -24,7 +24,7 @@
 			        var _script = document.createElement("script");
 			        _script.id = _sociomantic_home_settings.id;
 			        _script.type = 'text/javascript';
-			        // _script.async;
+			        _script.async;
 			        _script.src = '//'+_sociomantic_home_settings.url+_sociomantic_home_settings.advertiser_token;
 			        _script.className = "sonar_home";
 
