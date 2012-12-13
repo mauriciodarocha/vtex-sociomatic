@@ -31,21 +31,10 @@ var set_cookie=function(e,a,b){var c=new Date;c.setDate(c.getDate()+b);a=escape(
 				{
 					checkout: function()
 					{
-						// var basket = {
-						// 	products: [
-						// 	    { identifier: '352723', amount: 69.99, currency: 'BRL', quantity: 1 },
-						// 		{ identifier: '351716', amount: 19.99, currency: 'BRL', quantity: 1 }
-						// 	],
-						// 	transaction : '123456789',
-						// 	amount: 89.89,							
-						// 	currency: 'BRL'
-						// };
-
-						// window.basket = {};
 						var _data = _sociomantic_checkout.get.cookie();
 						var _amount=0;
-						for(var i in basket.products){ 
-							if(typeof _data.products[i].amount=="string") 
+						for(var i in _data.products){ 
+							if(typeof _data.products[i].amount=="string")
 								_amount += parseFloat(_data.products[i].amount); 
 						}
 						window.basket = _data;
@@ -57,13 +46,6 @@ var set_cookie=function(e,a,b){var c=new Date;c.setDate(c.getDate()+b);a=escape(
 					},
 					cart: function()
 					{
-
-					   //  var basket = {
-					   //     products: [
-					   //          { identifier: '352723', amount: 69.99, currency: 'BRL', quantity: 1 },
-								// { identifier: '351716', amount: 19.99, currency: 'BRL', quantity: 1 }
-					   //      ]
-					   //  };
 
 						var _basket,_identifier,_qty,_currency,_price,_obj,_products=new Array;
 						jQuery("table tbody tr").each(function(ndx,item){
