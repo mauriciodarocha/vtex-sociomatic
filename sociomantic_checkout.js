@@ -31,13 +31,13 @@ var set_cookie=function(e,a,b){var c=new Date;c.setDate(c.getDate()+b);a=escape(
 				{
 					checkout: function()
 					{
-						var _data = _sociomantic_checkout.get.cookie();
+						var _cookie_data = _sociomantic_checkout.get.cookie();
 						var _amount=0;
-						for(var i in _data.products){ 
-							if(typeof _data.products[i].amount=="string")
-								_amount += parseFloat(_data.products[i].amount); 
-						}
-						window.basket = _data;
+						for(var i in _cookie_data.products)
+							if(typeof _cookie_data.products[i].amount=="string")
+								_amount += parseFloat(_cookie_data.products[i].amount); 
+
+						window.basket = _cookie_data;
 						window.basket.transaction = document.getElementById("orderid").innerHTML;
 						window.basket.currency = _sociomantic_checkout_settings.currency;
 						window.basket.amount = _amount;
