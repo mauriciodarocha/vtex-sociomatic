@@ -178,4 +178,4 @@
 		return _sociomantic_product.init();
 	};
 
-})(jQuery);
+})();

@@ -58,4 +58,4 @@
         return new _sociomantic_home_plugin(_sociomantic_home_options);
     };
 
-})(jQuery);
+})();

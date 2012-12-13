@@ -75,4 +75,4 @@
         return new _sociomantic_category_plugin(_sociomantic_category_options);
     };
 
-})(jQuery);
+})();
