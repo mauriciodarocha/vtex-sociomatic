@@ -134,7 +134,9 @@
 						return false;
 					}
 					var _host = document.location.host;
-					var _img = "http://" + _host + jQuery(".apresentacao .thumbs > li img:first").attr("src");
+					var _src = jQuery("#include img:first").attr("src");
+					var _url = /https?\:\/\//.test(_src)?_src:"http://" + _host + _src;
+					var _img =  _url;
 					return _img;
 				}
 			},
