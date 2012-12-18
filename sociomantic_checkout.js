@@ -9,7 +9,8 @@ var set_cookie=function(e,a,b){var c=new Date;c.setDate(c.getDate()+b);a=escape(
 				id: 'sonar-adpan',
 				url: 'us-sonar.sociomantic.com/js/2010-07-01/adpan/',
 				advertiser_token:null,
-				currency: 'BRL'
+				currency: 'BRL',
+				confirmation: true
 			}, _sociomantic_checkout_options);
 
 		var _sociomantic_checkout = {
@@ -89,6 +90,9 @@ var set_cookie=function(e,a,b){var c=new Date;c.setDate(c.getDate()+b);a=escape(
 			        _script.className = "sonar_"+where;
 			        
 			        document.body.appendChild(_script);
+
+			        if(_sociomantic_checkout_settings.confirmation)
+			        	_sociomantic_checkout.set.confirmation();
 				},
 				cookie: function(data)
 				{
@@ -110,6 +114,22 @@ var set_cookie=function(e,a,b){var c=new Date;c.setDate(c.getDate()+b);a=escape(
 
 					_sociomantic_checkout.product_id = _sku;
 					_sociomantic_checkout.set.sociomantic.cart();
+				},
+				confirmation: function()
+				{
+					window.sale =
+				    {
+				        confirmed : true
+				    };
+
+					if ( typeof sociomantic === 'object' &&
+					     typeof sociomantic.sonar === 'object' &&
+					     typeof sociomantic.sonar.adv === 'object' &&
+					     typeof sociomantic.sonar.adv['marcynonline-br'] === 'object' &&
+					     typeof sociomantic.sonar.adv['marcynonline-br'].getConfirmed === 'function' )
+					{
+					    sociomantic.sonar.adv[_sociomantic_checkout_settings.advertiser_token].getConfirmed();
+					}
 				}
 			},
 			get:
