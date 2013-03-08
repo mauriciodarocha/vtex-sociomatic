@@ -14,6 +14,7 @@ var set_cookie=function(e,a,b){var c=new Date;c.setDate(c.getDate()+b);a=escape(
 			}, _sociomantic_checkout_options);
 
 		var _sociomantic_checkout = {
+			ajax_complete_flag: false,
 			product_id:null,
 			transaction_id:null,
 			product_ids:[],
@@ -25,6 +26,15 @@ var set_cookie=function(e,a,b){var c=new Date;c.setDate(c.getDate()+b);a=escape(
 				if(!_sociomantic_checkout.check.options()) return false;
 
 				_sociomantic_checkout.check.page();
+				if(!_sociomantic_checkout.ajax_complete_flag)
+        {
+        	_sociomantic_checkout.ajax_complete_flag = true;
+					jQuery(document).ajaxComplete(_sociomantic_checkout.ajax_complete);
+        }
+			},
+			ajax_complete: function () 
+			{
+				_sociomantic_checkout.set.data.cart();
 			},
 			set:
 			{
