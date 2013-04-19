@@ -127,6 +127,9 @@ var set_cookie=function(e,a,b){var c=new Date;c.setDate(c.getDate()+b);a=escape(
 				},
 				confirmation: function()
 				{
+					// not from sociomantic
+					if(!/sociomantic/.test(document.cookie)) return false;
+
 					window.sale =
 				    {
 				        confirmed : true
