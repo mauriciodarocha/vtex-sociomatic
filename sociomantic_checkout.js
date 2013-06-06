@@ -127,8 +127,8 @@ var set_cookie=function(e,a,b){var c=new Date;c.setDate(c.getDate()+b);a=escape(
 				},
 				confirmation: function()
 				{
-					// not from sociomantic
-					if(!/sociomantic/.test(document.cookie)) return false;
+					// not from sociomantic? not confirmation page? return false
+					if((!/sociomantic/.test(document.cookie)) || (!jQuery("body").hasClass("finaliza-compra"))) return false;
 
 					window.sale =
 				    {
