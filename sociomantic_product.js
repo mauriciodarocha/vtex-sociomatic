@@ -1,4 +1,4 @@
-;(function ($,document,window,undefined) {
+;(function ($, document, window, undefined) {
   jQuery.sociomantic_product = function (_sociomantic_product_options) {
     var _sociomantic_product = {
       init: function () {
@@ -41,11 +41,12 @@
       get: {
         identifier: function () {
           var _msg = "SOCIOMANTIC PLUGIN: Não foi possível encontrar o id do produto.";
-          if (jQuery(".skuList:first").length <= 0) {
+          var _identifier = jQuery("#___rc-p-id").val()||"";
+          _identifier = /,/.test(_identifier) ? _identifier.split(",")[0] : _identifier;
+          if (~~_identifier === 0) {
             _sociomantic_product.log(_msg);
             return false;
           }
-          var _identifier = jQuery(".skuList:first input:first").attr("currentproductid");
           return _identifier;
         },
         product_title: function () {
@@ -155,4 +156,4 @@
     return _sociomantic_product.init();
   };
 
-})(jQuery,document,window);
+})(jQuery, document, window);
